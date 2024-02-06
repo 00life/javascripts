@@ -15,7 +15,7 @@ setInterval(()=>{
 
       if(anchorText[i].innerText.toLowerCase() == "library"){
           snd1.play()
-      } else if(wordlist.includes(anchorText[i].innerText.toLowerCase() ) ){
+      }else if(wordlist.includes(anchorText[i].innerText.toLowerCase() ) ){
           snd2.play()
       };
 }
