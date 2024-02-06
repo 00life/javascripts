@@ -12,7 +12,10 @@ setInterval(()=>{
  
  for(let i=0; i < anchorText.length; i++){
 
-      if(anchorText[i].innerText.toLowerCase() == "library"){snd.play();};
+      if(anchorText[i].innerText.toLowerCase() == "library"){snd1.play()};
+      if(anchorText[i].innerText.toLowerCase() == "math"){snd2.play()};
+      if(anchorText[i].innerText.toLowerCase() == "science"){snd2.play()};
+      if(anchorText[i].innerText.toLowerCase() == "alted"){snd2.play()};
 }
 
 update.click(); 
