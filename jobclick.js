@@ -18,7 +18,7 @@ setInterval(()=>{
       if(anchorText[i].innerText.toLowerCase() == "alt. ed"){snd2.play()};
       if(anchorText[i].innerText.toLowerCase() == "geography"){snd2.play()};
 }
-snd2.play();
+
 update.click(); 
      
 
