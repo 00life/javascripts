@@ -15,7 +15,8 @@ setInterval(()=>{
       if(anchorText[i].innerText.toLowerCase() == "library"){snd1.play()};
       if(anchorText[i].innerText.toLowerCase() == "math"){snd2.play()};
       if(anchorText[i].innerText.toLowerCase() == "science"){snd2.play()};
-      if(anchorText[i].innerText.toLowerCase() == "alted"){snd2.play()};
+      if(anchorText[i].innerText.toLowerCase() == "alt. ed"){snd2.play()};
+      if(anchorText[i].innerText.toLowerCase() == "geography"){snd2.play()};
 }
 
 update.click(); 
