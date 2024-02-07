@@ -5,7 +5,8 @@ let soundString3 = "UklGRuTKAABXQVZFYmV4dFoCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 var snd1 = new Audio("data:audio/wav;base64," + soundString1);
 var snd2 = new Audio("data:audio/wav;base64," + soundString2);
 var snd3 = new Audio("data:audio/wav;base64," + soundString3);
-const wordlist = ["math", "science", "alt. ed", "geography"];
+const wordlist1 = ["math", "science", "alt. ed", "geography"];
+const wordlist2 = ["glendale"];
 
 setInterval(()=>{
  let anchorText = window.document.querySelectorAll("h4>a");
@@ -18,7 +19,7 @@ setInterval(()=>{
   
       if(anchorText[i].innerText.toLowerCase() == "library"){
           snd1.play()
-      }else if(wordlist.includes(anchorText[i].innerText.toLowerCase() ) ){
+      }else if(wordlist1.includes(anchorText[i].innerText.toLowerCase()) ){
           snd3.play()
       };
  };
