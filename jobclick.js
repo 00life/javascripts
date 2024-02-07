@@ -18,9 +18,11 @@ setInterval(()=>{
       }else if(wordlist.includes(anchorText[i].innerText.toLowerCase() ) ){
           snd2.play()
       };
-}
+  
+      setTimeout(()=>{},1000);
+ }
 
-update.click(); 
+ update.click(); 
      
 
-},10000);
+ },10000);
