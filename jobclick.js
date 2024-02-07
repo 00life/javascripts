@@ -18,7 +18,7 @@ setInterval(()=>{
       setTimeout(()=>{},500);
 
       let subject = anchorText[i].innerText.toLowerCase();
-      let school = anchorTest[i].children.toLowerCase();
+      let school = anchorTest[i].parentElement.children[0].toLowerCase();
   
       if(subject == "library"){
           snd1.play()
