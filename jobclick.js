@@ -19,7 +19,6 @@ setInterval(()=>{
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML;
-      console.log(school);
   
       if(subject == "library"){
           snd1.play()
