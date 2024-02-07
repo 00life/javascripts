@@ -20,7 +20,8 @@ setInterval(()=>{
       }else if(wordlist.includes(anchorText[i].innerText.toLowerCase() ) ){
           snd2.play()
       };
-  
+
+      snd3.play();
       setTimeout(()=>{},1000);
  }
 
