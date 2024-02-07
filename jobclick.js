@@ -20,8 +20,8 @@ setInterval(()=>{
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML;
 
-      console.log(subject);
-      console.log(array_subjects.includes(subject));
+      console.log(subject+" "+school);
+      console.log(array_subjects.includes(subject)+" "+array_schools.includes(school) );
   
       if(subject == "library"){
           snd1.play()
