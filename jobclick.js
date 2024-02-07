@@ -23,7 +23,7 @@ setInterval(()=>{
   
       if(subject == "library"){
           snd1.play()
-      }else if(array_subjects.includes(subject) && array_schools.includes(school)){
+      }else if(array_subjects.includes(subject) && array_schools.includes(school) ){
           snd3.play()
       };
  };
