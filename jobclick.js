@@ -14,14 +14,15 @@ setInterval(()=>{
  for(let j=0; j < cont.length; j++){if(cont[j].innerText.toLowerCase()=="continue"){cont[j].click()}};
  
  for(let i=0; i < anchorText.length; i++){
-
+      setTimeout(()=>{},500);
+  
       if(anchorText[i].innerText.toLowerCase() == "library"){
           snd1.play()
       }else if(wordlist.includes(anchorText[i].innerText.toLowerCase() ) ){
-          snd2.play()
+          snd3.play()
       };
  };
- snd3.play();
+ 
  update.click(); 
      
 
