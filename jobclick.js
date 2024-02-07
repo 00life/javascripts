@@ -18,7 +18,8 @@ setInterval(()=>{
       setTimeout(()=>{},200);
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
-      let school = anchorText[i].parentElement.parentElement.querySelectorAll("span")[1].toLowerCase().trim();
+      let school = anchorText[i].parentElement.parentElement //.querySelectorAll("span")[1].toLowerCase().trim();
+      console.log(school);
   
       if(subject == "library"){
           snd1.play()
