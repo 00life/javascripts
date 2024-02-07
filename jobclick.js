@@ -22,7 +22,6 @@ setInterval(()=>{
       };
 
       snd2.play();
-      setTimeout(()=>{},1000);
  }
 
  update.click(); 
