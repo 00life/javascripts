@@ -18,7 +18,7 @@ setInterval(()=>{
       setTimeout(()=>{},200);
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
-      let school = anchorText[i].parentElement.parentElement.parentElement;
+      let school = anchorText[i].parentElement.parentElement.parentElement.querySelectorAll("span");
       console.log(school);
   
       if(subject == "library"){
