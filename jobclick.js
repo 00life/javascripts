@@ -21,7 +21,7 @@ setInterval(()=>{
           snd2.play()
       };
 
-      snd3.play();
+      snd2.play();
       setTimeout(()=>{},1000);
  }
 
