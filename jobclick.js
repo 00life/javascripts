@@ -16,11 +16,12 @@ setInterval(()=>{
  
  for(let i=0; i < anchorText.length; i++){
       setTimeout(()=>{},200);
-      console.log("test:");
-      console.log(array_subjects.includes(subject));
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML;
+
+      console.log("test:");
+      console.log(array_subjects.includes(subject));
   
       if(subject == "library"){
           snd1.play()
