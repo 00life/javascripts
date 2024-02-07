@@ -20,7 +20,7 @@ setInterval(()=>{
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML;
 
-      console.log("test:");
+      console.log(subject);
       console.log(array_subjects.includes(subject));
   
       if(subject == "library"){
