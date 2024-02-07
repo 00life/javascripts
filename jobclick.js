@@ -18,7 +18,7 @@ setInterval(()=>{
       setTimeout(()=>{},200);
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
-      let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML;
+      let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
 
       console.log(subject+" && "+school);
       console.log(array_subjects.includes(subject)+" && "+array_schools.includes(school) );
