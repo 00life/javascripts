@@ -18,7 +18,7 @@ setInterval(()=>{
       setTimeout(()=>{},200);
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
-      let school = anchorText[i].parentElement.parentElement.children;
+      let school = anchorText[i].parentElement.parentElement.children[2];
       console.log(school);
   
       if(subject == "library"){
