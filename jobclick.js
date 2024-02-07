@@ -16,6 +16,7 @@ setInterval(()=>{
  
  for(let i=0; i < anchorText.length; i++){
       setTimeout(()=>{},500);
+      console.log(anchorText[i].children);
   
       if(anchorText[i].innerText.toLowerCase() == "library"){
           snd1.play()
