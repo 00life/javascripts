@@ -15,7 +15,7 @@ setInterval(()=>{
  for(let j=0; j < cont.length; j++){if(cont[j].innerText.toLowerCase()=="continue"){cont[j].click()}};
  
  for(let i=0; i < anchorText.length; i++){
-      setTimeout(()=>{},500);
+      setTimeout(()=>{},200);
 
       let subject = anchorText[i].innerText.toLowerCase();
       let school = anchorTest[i].parentElement.children[0].toLowerCase();
