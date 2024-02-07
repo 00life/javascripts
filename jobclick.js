@@ -5,7 +5,7 @@ let soundString3 = "UklGRuTKAABXQVZFYmV4dFoCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 var snd1 = new Audio("data:audio/wav;base64," + soundString1);
 var snd2 = new Audio("data:audio/wav;base64," + soundString2);
 var snd3 = new Audio("data:audio/wav;base64," + soundString3);
-const array_subjects = ["math", "science", "alt. ed", "geography"];
+const array_subjects = ["math", "science", "alt. ed", "geography", "guidance"];
 const array_schools = ["glendale", "sir winston churchill", "bernie custis"];
 
 setInterval(()=>{
