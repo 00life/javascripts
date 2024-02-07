@@ -5,8 +5,8 @@ let soundString3 = "UklGRuTKAABXQVZFYmV4dFoCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 var snd1 = new Audio("data:audio/wav;base64," + soundString1);
 var snd2 = new Audio("data:audio/wav;base64," + soundString2);
 var snd3 = new Audio("data:audio/wav;base64," + soundString3);
-const wordlist1 = ["math", "science", "alt. ed", "geography"];
-const wordlist2 = ["glendale"];
+const array_subjects = ["math", "science", "alt. ed", "geography"];
+const array_schools = ["glendale"];
 
 setInterval(()=>{
  let anchorText = window.document.querySelectorAll("h4>a");
@@ -16,12 +16,13 @@ setInterval(()=>{
  
  for(let i=0; i < anchorText.length; i++){
       setTimeout(()=>{},500);
-      let school = anchorTest[i].children;
-      console.log("test", school);
+
+      let subject = anchorText[i].innerText.toLowerCase();
+      let school = anchorTest[i].children.toLowerCase();
   
-      if(anchorText[i].innerText.toLowerCase() == "library"){
+      if(subject == "library"){
           snd1.play()
-      }else if(wordlist1.includes(anchorText[i].innerText.toLowerCase()) ){
+      }else if(array_subjects.includes(subject) && array_schools.includes(school) ){
           snd3.play()
       };
  };
