@@ -27,7 +27,7 @@ setInterval(()=>{
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
       let load = anchorText[i].parentElement.parentElement.children;
-      console.log("LOAD: "+load)
+      console.log(load);
 
       let bool_subject = array_subjects.includes(subject);
       let bool_school_1 = array_schools_1.includes(school);
@@ -41,7 +41,7 @@ setInterval(()=>{
       console.log(bool_subject + " && " + array_bool.some(v=>v==true));
       console.log(" ");
   
-      if(subject == "library" && bool_load){
+      if(subject == "library"){
           snd_bing.play()
       }else if(bool_subject && bool_school_1){
           snd_click.play()
