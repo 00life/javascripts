@@ -27,19 +27,22 @@ setInterval(()=>{
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
 
+      let bool_subject = array_subjects.includes(subject);
+      let bool_school_1 = array_schools_1.includes(school);
+      let bool_school_2 = array_schools_2.includes(school);
+      let bool_school_3 = array_schools_3.includes(school);
+  
       console.log(subject + " && " + school);
-      console.log(array_subjects.includes(subject) + " && schools_1: " + array_schools_1.includes(school) );
-      console.log(array_subjects.includes(subject) + " && schools_2: " + array_schools_2.includes(school) );
-      console.log(array_subjects.includes(subject) + " && schools_3: " + array_schools_3.includes(school) );
+      console.log(bool_subject + " && " + bool_school_1 + bool_school_2 + bool_school_3 );
       console.log(" ");
   
       if(subject == "library"){
           snd_bing.play()
-      }else if(array_subjects.includes(subject) && array_schools_1.includes(school) ){
+      }else if(bool_subject && bool_school_1){
           snd_click.play()
-      }else if(array_subjects.includes(subject) && array_schools_2.includes(school) ){
+      }else if(bool_subject && bool_school_2){
           snd_tick.play()
-      }else if(array_subjects.includes(subject) && array_schools_3.includes(school) ){
+      }else if(bool_subject && bool_school_3){
           snd_shake.play()
       };
  };
