@@ -33,7 +33,7 @@ setInterval(()=>{
       let bool_school_1 = array_schools_1.includes(school);
       let bool_school_2 = array_schools_2.includes(school);
       let bool_school_3 = array_schools_3.includes(school);
-      let bool_load = load.includes("100%");
+      //let bool_load = load.includes("100%");
 
       let array_bool = [bool_school_1, bool_school_2, bool_school_3];
   
