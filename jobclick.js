@@ -26,28 +26,31 @@ setInterval(()=>{
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
+      let load = anchorText[i].parentElement.parentElement.children[3].children[0].innerHTML.toLowercase().trim();
 
       let bool_subject = array_subjects.includes(subject);
       let bool_school_1 = array_schools_1.includes(school);
       let bool_school_2 = array_schools_2.includes(school);
       let bool_school_3 = array_schools_3.includes(school);
+      let bool_load = load.includes("100%");
+
+      let array_bool = [bool_school_1, bool_school_2, bool_school_3];
   
-      console.log(subject + " && " + school);
-      console.log(bool_subject + " && " + bool_school_1 + bool_school_2 + bool_school_3 );
+      console.log(subject + " && " + school + " && " + bool_load);
+      console.log(bool_subject + " && " + array_bool.some(v=>v==true));
       console.log(" ");
   
-      if(subject == "library"){
+      if(subject == "library" && bool_load){
           snd_bing.play()
-      }else if(bool_subject && bool_school_1){
+      }else if(bool_subject && bool_school_1 && bool_load){
           snd_click.play()
-      }else if(bool_subject && bool_school_2){
+      }else if(bool_subject && bool_school_2 && bool_load){
           snd_tick.play()
-      }else if(bool_subject && bool_school_3){
+      }else if(bool_subject && bool_school_3 && bool_load){
           snd_shake.play()
       };
  };
  
  update.click(); 
      
-
  },10000);
