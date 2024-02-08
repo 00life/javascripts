@@ -10,7 +10,7 @@ var snd_shake = new Audio("data:audio/wav;base64," + soundString_shake);
 
 const array_subjects = ["math", "science", "alt. ed", "geography"];
 const array_schools_1 = ["glendale", "sir winston churchill", "bernie custis"];
-const array_schools_2 = [""];
+const array_schools_2 = ["nora henderson", "westdale", "westmount" ,"sherwood"];
 
 setInterval(()=>{
  let anchorText = window.document.querySelectorAll("h4>a");
