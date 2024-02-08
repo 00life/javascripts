@@ -37,7 +37,7 @@ setInterval(()=>{
 
       let array_bool = [bool_school_1, bool_school_2, bool_school_3];
   
-      console.log(subject + " && " + school + " && " + bool_load);
+      console.log(subject + " && " + school);
       console.log(bool_subject + " && " + array_bool.some(v=>v==true));
       console.log(" ");
   
