@@ -34,7 +34,7 @@ setInterval(()=>{
       let bool_school_2 = array_schools_2.includes(school);
       let bool_school_3 = array_schools_3.includes(school);
       let bool_load = load.includes("100%");
-      console.log(boot_load);
+      console.log("BOOT_LOAD: "+boot_load);
 
       let array_bool = [bool_school_1, bool_school_2, bool_school_3];
   
