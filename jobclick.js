@@ -36,8 +36,8 @@ setInterval(()=>{
 
       let array_bool = [bool_school_1, bool_school_2, bool_school_3];
   
-      console.log(subject + " && " + school + " && 100%:" + bool_load);
-      console.log(bool_subject + " && " + array_bool.some(v=>v==true));
+      console.log(subject + " && " + school + " && 100%");
+      console.log(bool_subject + " && " + array_bool.some(v=>v==true) +" && " + bool_load);
       console.log(" ");
   
       if(subject == "library" && bool_load){
