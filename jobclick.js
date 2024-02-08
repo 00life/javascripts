@@ -43,11 +43,11 @@ setInterval(()=>{
   
       if(subject == "library" && bool_load){
           snd_bing.play()
-      }else if(bool_subject && bool_school_1 && bool_load){
+      }else if(bool_subject && bool_school_1){
           snd_click.play()
-      }else if(bool_subject && bool_school_2 && bool_load){
+      }else if(bool_subject && bool_school_2){
           snd_tick.play()
-      }else if(bool_subject && bool_school_3 && bool_load){
+      }else if(bool_subject && bool_school_3){
           snd_shake.play()
       };
  };
