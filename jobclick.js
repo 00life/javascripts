@@ -40,13 +40,13 @@ setInterval(()=>{
       console.log(bool_subject + " && " + array_bool.some(v=>v==true));
       console.log(" ");
   
-      if(subject == "library"){
+      if(subject == "library" && bool_load){
           snd_bing.play()
-      }else if(bool_subject && bool_school_1){
+      }else if(bool_subject && bool_school_1 && bool_load){
           snd_click.play()
-      }else if(bool_subject && bool_school_2){
+      }else if(bool_subject && bool_school_2 && bool_load){
           snd_tick.play()
-      }else if(bool_subject && bool_school_3){
+      }else if(bool_subject && bool_school_3 && bool_load){
           snd_shake.play()
       };
  };
