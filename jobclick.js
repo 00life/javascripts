@@ -26,7 +26,8 @@ setInterval(()=>{
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
-      let load = anchorText[i].parentElement.parentElement.children[3].children[0].innerHTML.toLowercase().trim();
+      let load = anchorText[i].parentElement.parentElement.children;
+      console.log("LOAD: "+load)
 
       let bool_subject = array_subjects.includes(subject);
       let bool_school_1 = array_schools_1.includes(school);
