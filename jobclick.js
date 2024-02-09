@@ -27,6 +27,7 @@ setInterval(()=>{
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
       let load = anchorText[i].parentElement.parentElement.children[3].children[0].innerHTML.toString();
+      let link = anchorText[i].href;
 
       let bool_subject = array_subjects.includes(subject);
       let bool_school_1 = array_schools_1.includes(school);
@@ -41,13 +42,18 @@ setInterval(()=>{
       console.log(" ");
   
       if(subject == "library" && bool_load){
-          snd_bing.play()
+          snd_bing.play();
+          let win = window.open(link);
+       
       }else if(bool_subject && bool_school_1 && bool_load){
           snd_click.play()
+       
       }else if(bool_subject && bool_school_2 && bool_load){
           snd_tick.play()
+       
       }else if(bool_subject && bool_school_3 && bool_load){
           snd_shake.play()
+       
       };
  };
  
