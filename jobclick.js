@@ -43,7 +43,16 @@ setInterval(()=>{
   
       if(subject == "library" && bool_load){
           snd_bing.play();
+       
           let win = window.open(link);
+          let btns = win.document.querySelectorAll("button");
+       
+          for(let i=0; i < btns.length; i++){
+           let confirmed = btns[i].innerText.toLowerCase().trim();
+           (confirmed == "confirm")? btns[i].click() : "";
+          };
+
+          win.close();
        
       }else if(bool_subject && bool_school_1 && bool_load){
           snd_click.play()
