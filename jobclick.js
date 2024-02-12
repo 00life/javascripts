@@ -44,7 +44,7 @@ setInterval(()=>{
           snd_bing.play();
        
           let win = window.open(link);
-          setTimeout(()=>console.log(""),5000)
+          setTimeout(()=>console.log(""),5000);
           
           let btns = win.document.querySelectorAll("button");
        
