@@ -49,7 +49,7 @@ setInterval(()=>{
        
           for(let i=0; i < btns.length; i++){
            let confirmed = btns[i].innerText.toLowerCase().trim();
-           (confirmed == "confirm")? btns[i].click() : "";
+           (confirmed == "accept")? btns[i].click() : "";
           };
 
           win.close();
