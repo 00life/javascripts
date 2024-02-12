@@ -46,7 +46,7 @@ setInterval(()=>{
           let win = window.open(link);
           setTimeout(()=>console.log(""),5000);
           
-          let btns = win.document.querySelectorAll("button");
+          let btns = win.document.querySelectorAll("input");
        
           for(let i=0; i < btns.length; i++){
            let confirmed = btns[i].innerText.toLowerCase().trim();
