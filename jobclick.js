@@ -22,11 +22,10 @@ setInterval(()=>{
  for(let j=0; j < cont.length; j++){if(cont[j].innerText.toLowerCase()=="continue"){cont[j].click()}};
  
  for(let i=0; i < anchorText.length; i++){
-      setTimeout(()=>{},200);
 
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
-      let load = anchorText[i].parentElement.parentElement.children[3].children[0].innerHTML.toString();
+      let load = anchorText[i].parentElement.parentElement.children[3].children[0].innerHTML;
       let link = anchorText[i].href;
 
       let bool_subject = array_subjects.includes(subject);
@@ -45,6 +44,8 @@ setInterval(()=>{
           snd_bing.play();
        
           let win = window.open(link);
+          setTimeout(()=>console.log(""),5000)
+          
           let btns = win.document.querySelectorAll("button");
        
           for(let i=0; i < btns.length; i++){
