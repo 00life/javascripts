@@ -49,8 +49,13 @@ setInterval(()=>{
           let btns = win.document.querySelectorAll("input");
        
           for(let i=0; i < btns.length; i++){
-           let confirmed = btns[i].innerText.toLowerCase().trim();
-           (confirmed == "accept")? btns[i].click() : "";
+           let confirmed = btns[i].value.toLowerCase();
+           
+           if(confirmed == "accept"){
+            console.log("TARGET");
+            //btns.click();
+           };
+           
           };
 
           win.close();
