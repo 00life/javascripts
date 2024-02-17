@@ -15,6 +15,12 @@ const array_schools_1 = ["glendale", "sir winston churchill", "bernie custis"];
 const array_schools_2 = ["nora henderson", "westdale", "westmount" ,"sherwood"];
 const array_schools_3 = ["saltfleet district high", "orchard park secondary"];
 
+function func_clickAccept(lnk){
+     let winLink = window.open(lnk);
+     let elemAccept = winLink.document.querySelectorAll("input");
+     for(let i=0; i < elemAccept.length; i++){if(elemAccept[i].value.toLowerCase()==="accept"){elemAccept.click()}};
+};
+
 setInterval(()=>{
  let anchorText = window.document.querySelectorAll("h4>a");
  let cont= window.document.querySelectorAll("button");
@@ -26,6 +32,7 @@ setInterval(()=>{
       let subject = anchorText[i].innerText.toLowerCase().trim();
       let school = anchorText[i].parentElement.parentElement.children[2].children[0].innerHTML.toLowerCase().trim();
       let load = anchorText[i].parentElement.parentElement.children[3].children[0].innerHTML;
+      let joblink = anchorText[i].href;
 
       let bool_subject = array_subjects.includes(subject);
       let bool_school_1 = array_schools_1.includes(school);
@@ -41,6 +48,7 @@ setInterval(()=>{
   
       if(subject == "library" && bool_load){
           snd_bing.play();
+          func_clickAccept(joblink);
        
       }else if(bool_subject && bool_school_1 && bool_load){
           snd_click.play()
