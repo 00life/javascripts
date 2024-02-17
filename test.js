@@ -1,1 +1,2 @@
-window.open()
+var win = window.open();
+console.log(win)l
