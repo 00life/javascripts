@@ -1,2 +1,2 @@
 var win = window.open();
-console.log(win)l
+console.log(win);
