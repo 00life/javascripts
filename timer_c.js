@@ -1,3 +1,5 @@
+//fetch('https://raw.githubusercontent.com/00life/javascripts/master/hwcdsbbutons.js').then(r=>r.text()).then(r=>eval(r))
+
 Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
     let btn = document.createElement('input');
@@ -25,6 +27,3 @@ setInterval(()=>{
         
     });
 }, 5000);
-
-//PASTE CODE BELOW
-//fetch('https://raw.githubusercontent.com/00life/javascripts/master/hwcdsbbutons.js').then(r=>r.text()).then(r=>eval(r))
