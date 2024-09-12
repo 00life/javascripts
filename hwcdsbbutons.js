@@ -19,8 +19,8 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
 setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
-        let current =  let date = new Date().toLocaleTimeString().slice(0,-6);
-        console.log('test ', e3.dataset);    
+        let current = new Date().toLocaleTimeString().slice(0,-6);
+        console.log('test ', e3.value);    
         //console.log(e3.style.color='red');
         
     });
