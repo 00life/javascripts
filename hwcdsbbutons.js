@@ -1,10 +1,9 @@
-var btn;
-
 Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
-    btn = document.createElement('input');
+    let btn = document.createElement('input');
     btn.setAttribute('type','button');
     btn.setAttribute('value','TIME');
+    btn.setAttribute('data-min', new Date().getTime() / 1000 / 60)
     btn.addEventListener('click',e2=>{
         let date = new Date().toLocaleTimeString().slice(0,-6);
         (e2.currentTarget.value =='TIME') ? e2.currentTarget.value = date : e2.currentTarget.value = 'TIME';
