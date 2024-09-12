@@ -12,3 +12,6 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     ele_div.appendChild(btn);
     e1.appendChild(ele_div);
 });
+
+//PASTE CODE BELOW
+//fetch('https://raw.githubusercontent.com/00life/javascripts/master/hwcdsbbutons.js').then(r=>r.text()).then(r=>eval(r))
