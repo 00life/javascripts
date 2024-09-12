@@ -1,4 +1,4 @@
-//fetch('https://raw.githubusercontent.com/00life/javascripts/master/hwcdsbbutons.js').then(r=>r.text()).then(r=>eval(r))
+//fetch('https://raw.githubusercontent.com/00life/javascripts/master/timer_c.js').then(r=>r.text()).then(r=>eval(r))
 
 Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
