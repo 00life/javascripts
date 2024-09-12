@@ -1,6 +1,8 @@
+var btn;
+
 Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
-    let btn = document.createElement('input');
+    btn = document.createElement('input');
     btn.setAttribute('type','button');
     btn.setAttribute('value','TIME');
     btn.addEventListener('click',e2=>{
@@ -12,6 +14,8 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     ele_div.appendChild(btn);
     e1.appendChild(ele_div);
 });
+
+console.log(btn);
 
 //PASTE CODE BELOW
 //fetch('https://raw.githubusercontent.com/00life/javascripts/master/hwcdsbbutons.js').then(r=>r.text()).then(r=>eval(r))
