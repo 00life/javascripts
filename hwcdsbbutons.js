@@ -21,7 +21,7 @@ setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
         let current =  let date = new Date().toLocaleTimeString().slice(0,-6);
         console.log('test ', e3.dataset);    
-        console.log(e3.style.color='red');
+        //console.log(e3.style.color='red');
         
     });
 }, 5000);
