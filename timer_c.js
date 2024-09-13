@@ -23,11 +23,9 @@ setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
         let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
         let current_convert = parseInt(current.slice(0,2))*60 + parseInt(current.slice(-2,));
-        let date_convert = parseInt(e3.value.slice(0,2))*60 + parseInt(e3.value.slice(-2,));
+        let date_convert = parseInt(e3.value.slice(0,2))*60 + parseInt(e3.value.slice(-2,)) + 2;
 
         if(e3.value == 'TIME'){e3.style.color='none'; return};
-        console.log('test');
-        //(!isNaN(date_convert) && date_convert + 2 > current_convert) ? e3.style.color='red' : e3.style.color='none';
-        //(e3.value == 'TIME') ? e3.style.color='none':null;
+        if(date_convert >= current_convert){e3.style.color='red'};
     });
 }, 5000);
