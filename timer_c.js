@@ -25,7 +25,7 @@ setInterval(()=>{
         let current_convert = parseInt(current.slice(0,2))*60 + parseInt(current.slice(-2,));
         let date_convert = parseInt(e3.value.slice(0,2))*60 + parseInt(e3.value.slice(-2,)) + 2;
 
-        if(e3.value == 'TIME'){e3.style.color='none'; return};
+        if(e3.value == 'TIME'){e3.style.color='black'; return};
         if(date_convert >= current_convert){e3.style.color='red'};
     });
 }, 5000);
