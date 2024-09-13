@@ -1,4 +1,5 @@
 //fetch('https://raw.githubusercontent.com/00life/javascripts/master/timer_c.js').then(r=>r.text()).then(r=>eval(r))
+const waitTime = 15; //min
 
 Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
@@ -23,10 +24,9 @@ setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
         let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
         let current_convert = parseInt(current.slice(0,2))*60 + parseInt(current.slice(-2,));
-        let date_convert = parseInt(e3.value.slice(0,2))*60 + parseInt(e3.value.slice(-2,)) + 2;
+        let date_convert = parseInt(e3.value.slice(0,2))*60 + parseInt(e3.value.slice(-2,)) +  waitTime;
 
         if(e3.value == 'TIME'){e3.style.color='black'; return};
-        console.log(date_convert, " < ", current_convert);
-        if(date_convert =< current_convert){e3.style.color='red'};
+        if(date_convert <= current_convert){e3.style.color='red'};
     });
 }, 5000);
