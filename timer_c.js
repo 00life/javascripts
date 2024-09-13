@@ -22,6 +22,7 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
         let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+        let current_convert = Number(current.slice(0,1)) + Number(current.slice(0,1));
         console.log('test ', e3.value);    
         //console.log(e3.style.color='red');
         
