@@ -7,7 +7,7 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     btn.setAttribute('value','TIME');
     btn.setAttribute('class','myBtn');
     btn.addEventListener('click',e2=>{
-        let date = new Date().toLocaleTimeString('en-US',{ hour: "2-digit", minute: "2-digit", hour12: false});
+        let date = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
         if(e2.currentTarget.value =='TIME'){
             e2.currentTarget.value = date;
         }else{
@@ -21,7 +21,7 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
 setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
-        let current = new Date().toLocaleTimeString().slice(0,-6);
+        let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
         console.log('test ', e3.value);    
         //console.log(e3.style.color='red');
         
