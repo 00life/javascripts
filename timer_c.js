@@ -24,8 +24,7 @@ setInterval(()=>{
         let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
         let current_convert = Number(current.slice(0,1)) + Number(current.slice(-2,-1));
         let date_convert = Number(e3.value.slice(0,1)) + Number(e3.value.slice(-2,-1));
-        console.log('test ', e3.value);    
+        (date_convert + 15 > current_convert) ? e3.style.color='red' : null;  
         //console.log(e3.style.color='red');
-        
     });
 }, 5000);
