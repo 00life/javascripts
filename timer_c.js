@@ -22,9 +22,12 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 setInterval(()=>{
     Array.from(document.querySelectorAll('.myBtn')).forEach(e3=>{
         let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
-        let current_convert = Number(current.slice(0,1)) + Number(current.slice(-2,-1));
-        let date_convert = Number(e3.value.slice(0,1)) + Number(e3.value.slice(-2,-1));
-        (date_convert + 15 > current_convert) ? e3.style.color='red' : e3.style.color='none';
-        console.log('current:', current_convert,'...date:',date_convert);
+        let current_convert = parseInt(current.slice(0,2))*60 + parseInt(current.slice(-2,));
+        let date_convert = parseInt(e3.value.slice(0,2))*60 + parseInt(e3.value.slice(-2,));
+
+        if(e3.value == 'TIME'){e3.style.color='none'; return};
+        console.log('test');
+        //(!isNaN(date_convert) && date_convert + 2 > current_convert) ? e3.style.color='red' : e3.style.color='none';
+        //(e3.value == 'TIME') ? e3.style.color='none':null;
     });
 }, 5000);
