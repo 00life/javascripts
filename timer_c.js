@@ -44,3 +44,15 @@ setInterval(()=>{
 //     method:"POST",
 //     body:formData
 // });
+
+////Supply Teach Notes (Script)////
+// const sheets = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1KESlFACtONHfxKReHbYAlwIV7e4tEO1FHt-tU77Uups/edit?resourcekey=&gid=1020634359#gid=1020634359");
+
+// const sheet = sheets.getSheetByName("notes");
+
+// function doPost(e){
+//   let data = e.parameter;
+//   sheet.appendRow([data.Timestamp,data.Student,data.Class,data.Note]);
+//   return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
+// };
+
