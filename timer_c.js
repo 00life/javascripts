@@ -30,3 +30,17 @@ setInterval(()=>{
         if(date_convert <= current_convert){e3.style.color='red'};
     });
 }, 5000);
+
+// let formData = new FormData();
+// formData.append('Timestamp','Today');
+// formData.append('Student','Me');
+// formData.append('Class','math');
+// formData.append('Note','test');
+// console.log(formData);
+
+// let URL = "https://script.google.com/macros/s/AKfycbxXDkvra5txNoQuUvIMrhLLUOP8CFQh1m05Ur_Qq2mHF1RG6iMrs6QATF9HdtyWP6sITg/exec";
+
+// fetch(URL,{
+//     method:"POST",
+//     body:formData
+// });
