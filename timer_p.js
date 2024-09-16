@@ -34,7 +34,7 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
         formData.append("Class", myclass);
         formData.append("Note", note);
         
-        let URL = "https://script.google.com/macros/s/AKfycbxXDkvra5txNoQuUvIMrhLLUOP8CFQh1m05Ur_Qq2mHF1RG6iMrs6QATF9HdtyWP6sITg/exec";
+        let URL = `${{vars.GOOGLESHEETSUPPLYURL}}`;
         fetch(URL, {method:"POST", body:formData});
         
     });
