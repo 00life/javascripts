@@ -22,8 +22,12 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
             note = "Hall-Pass (Out)";
             
         }else{
+            let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+            let current_convert = parseInt(current.slice(0,2))*60 + parseInt(current.slice(-2,));
+            let date_convert = parseInt(e2.currentTarget.value.slice(0,2))*60 + parseInt(e2.currentTarget.value.slice(-2,));
+            let minDiff = current_convert - date_convert;
+            note = `Hall-Pass (Return in ${minDiff} min)`;
             e2.currentTarget.value = 'TIME';
-            note = "Hall-Pass (Return)";
         };
 
         let formData = new FormData();
