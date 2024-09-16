@@ -1,5 +1,5 @@
-
 //fetch('https://raw.githubusercontent.com/00life/javascripts/master/timer_c.js').then(r=>r.text()).then(r=>eval(r))
+
 const waitTime = 15; //min
 
 Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
@@ -57,3 +57,20 @@ setInterval(()=>{
         if(date_convert <= current_convert){e3.style.color='red'};
     });
 }, 5000);
+
+
+
+/*
+
+//// Instructions on Google's Apps Script ////
+
+const sheets = SpreadsheetApp.openByUrl(" <GOOGLESHEET_URL> ");
+const sheet = sheets.getSheetByName(" <SHEET_NAME> ");
+
+function doPost(e){
+  let data = e.parameter;
+  sheet.appendRow([data.Timestamp,data.Student,data.Class,data.Note]);
+  return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
+}; 
+
+*/
