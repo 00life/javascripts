@@ -25,6 +25,7 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
         
         let timestamp = new Date().toLocaleString();
         let student = e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan').innerHTML;
+        let school = document.querySelector('#schoolText').innerText;
         let myclass = document.querySelector('#content-main > h1').innerText.slice(16,);
         let note = prompt("Please enter note");
         if(note == null){return};
@@ -32,6 +33,7 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
         let formData = new FormData();
         formData.append("Timestamp", timestamp);
         formData.append("Student", student);
+        formData.append("School", school);
         formData.append("Class", myclass);
         formData.append("Note", note);
         
