@@ -9,12 +9,33 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
     btn.setAttribute('value','TIME');
     btn.setAttribute('class','myBtn');
     btn.setAttribute("style", "background-color: white");
-    btn.addEventListener('click',e2=>{
-        let date = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+    btn.addEventListener('click', e2=>{
+
+        let timestamp = new Date().toLocaleString();
+        let student = e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan').innerHTML;
+        let school = document.querySelector('#schoolText').innerText;
+        let myclass = document.querySelector('#content-main > h1').innerText.slice(16,);
+        var note;
+        
         if(e2.currentTarget.value =='TIME'){
-            e2.currentTarget.value = date;
+            e2.currentTarget.value = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+            note = "Hall-Pass (Out)";
+            
         }else{
-            e2.currentTarget.value = 'TIME'};
+            e2.currentTarget.value = 'TIME';
+            note = "Hall-Pass (Return)";
+        };
+
+        let formData = new FormData();
+        formData.append("Timestamp", timestamp);
+        formData.append("Student", student);
+        formData.append("School", school);
+        formData.append("Class", myclass);
+        formData.append("Note", note);
+        
+        let URL = localStorage.getItem("googleSheetSupplyURL");
+        fetch(URL, {method:"POST", body:formData});
+         
     });
 
     let btn2 = document.createElement('input');
