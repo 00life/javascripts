@@ -9,7 +9,7 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
     btn.setAttribute('value','TIME');
     btn.setAttribute('class','myBtn');
     btn.setAttribute("style", "background-color: white");
-    btn.addEventListener('click',e2=>{
+    btn.addEventListener('click',e=>{
         let date = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
         if(e2.currentTarget.value =='TIME'){
             e2.currentTarget.value = date;
@@ -21,8 +21,11 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
     btn2.setAttribute('type','button');
     btn2.setAttribute('value','✎');
     btn2.setAttribute('class','myBtn2');
-    btn2.setAttribute("style", "background-color: white");
-    btn2.addEventListener('click',e2=>{});
+    btn2.addEventListener('click',e2=>{
+        let note = prompt("Please enter note");
+        console.log(note);
+        console.log(e2.currentTarget.parentNode.parentNode.querySelector('.pssc-studentNameSpan'));
+    });
 
     
     let ele_div = document.createElement('div');
