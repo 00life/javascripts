@@ -23,7 +23,8 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
     btn2.setAttribute('class','myBtn2');
     btn2.addEventListener('click',e2=>{
         let note = prompt("Please enter note");
-        console.log(note);
+        let timestamp = new Date().toLocaleString();
+        let name = e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan').innerHTML;
         console.log(e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan'));
     });
 
