@@ -22,10 +22,21 @@ Array.from(document.querySelectorAll('.pssc-studentMaskDiv')).forEach(e1=>{
     btn2.setAttribute('value','✎');
     btn2.setAttribute('class','myBtn2');
     btn2.addEventListener('click',e2=>{
-        let note = prompt("Please enter note");
+        
         let timestamp = new Date().toLocaleString();
-        let name = e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan').innerHTML;
-        console.log(name);
+        let student = e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan').innerHTML;
+        let myclass = document.querySelector('#content-main > h1').innerText.slice(16,);
+        let note = prompt("Please enter note");
+        
+        let formData = new FormData();
+        formData.append("Timestamp", timestamp);
+        formData.append("Student", student);
+        formData.append("Class", myclass);
+        formData.append("Note", note);
+        
+        let URL = "https://script.google.com/macros/s/AKfycbxXDkvra5txNoQuUvIMrhLLUOP8CFQh1m05Ur_Qq2mHF1RG6iMrs6QATF9HdtyWP6sITg/exec";
+        fetch(URL, {method:"POST", body:formData});
+        
     });
 
     
