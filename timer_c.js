@@ -38,7 +38,7 @@ setInterval(()=>{
 // formData.append('Note','test');
 // console.log(formData);
 
-// let URL = "https://script.google.com/macros/s/AKfycbxXDkvra5txNoQuUvIMrhLLUOP8CFQh1m05Ur_Qq2mHF1RG6iMrs6QATF9HdtyWP6sITg/exec";
+// let URL = localStorage.getItem('googleSheetSupplyURL');
 
 // fetch(URL,{
 //     method:"POST",
@@ -46,9 +46,8 @@ setInterval(()=>{
 // });
 
 ////Supply Teach Notes (Script)////
-// const sheets = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1KESlFACtONHfxKReHbYAlwIV7e4tEO1FHt-tU77Uups/edit?resourcekey=&gid=1020634359#gid=1020634359");
-
-// const sheet = sheets.getSheetByName("notes");
+// const sheets = SpreadsheetApp.openByUrl(" <GOOGLESHEET_URL> ");
+// const sheet = sheets.getSheetByName(" <SHEET_NAME> ");
 
 // function doPost(e){
 //   let data = e.parameter;
