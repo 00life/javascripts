@@ -1,4 +1,4 @@
-//fetch('https://raw.githubusercontent.com/00life/javascripts/master/timer_c.js').then(r=>r.text()).then(r=>eval(r))
+//fetch('https://raw.githubusercontent.com/00life/javascripts/master/timer_p.js').then(r=>r.text()).then(r=>eval(r))
 
 const waitTime = 15; //min
 
