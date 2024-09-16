@@ -71,7 +71,7 @@ const sheet = sheets.getSheetByName(" <SHEET_NAME> ");
 
 function doPost(e){
   let data = e.parameter;
-  sheet.appendRow([data.Timestamp,data.Student,data.Class,data.Note]);
+  sheet.appendRow([data.Timestamp, data.Student, data.School, data.Class, data.Note]);
   return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
 }; 
 
