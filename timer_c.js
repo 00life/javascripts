@@ -1,4 +1,5 @@
 //fetch('https://raw.githubusercontent.com/00life/javascripts/master/timer_c.js').then(r=>r.text()).then(r=>eval(r))
+
 const waitTime = 15; //min
 
 Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
@@ -7,7 +8,7 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     btn.setAttribute('type','button');
     btn.setAttribute('value','TIME');
     btn.setAttribute('class','myBtn');
-    btn.addEventListener('click',e2=>{
+    btn.addEventListener('click', e2 => {
 
         let timestamp = new Date().toLocaleString();
         let student = document.querySelector('td.seat-cellName').innerText;
@@ -81,27 +82,18 @@ setInterval(()=>{
     });
 }, 5000);
 
-// let formData = new FormData();
-// formData.append('Timestamp','Today');
-// formData.append('Student','Me');
-// formData.append('Class','math');
-// formData.append('Note','test');
-// console.log(formData);
+/*
 
-// let URL = localStorage.getItem('googleSheetSupplyURL');
+//// Instructions on Google's Apps Script ////
 
-// fetch(URL,{
-//     method:"POST",
-//     body:formData
-// });
+const sheets = SpreadsheetApp.openByUrl(" <GOOGLESHEET_URL> ");
+const sheet = sheets.getSheetByName(" <SHEET_NAME> ");
 
-////Supply Teach Notes (Script)////
-// const sheets = SpreadsheetApp.openByUrl(" <GOOGLESHEET_URL> ");
-// const sheet = sheets.getSheetByName(" <SHEET_NAME> ");
+function doPost(e){
+  let data = e.parameter;
+  sheet.appendRow([data.Timestamp, data.Student, data.School, data.Class, data.Note]);
+  return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
+}; 
 
-// function doPost(e){
-//   let data = e.parameter;
-//   sheet.appendRow([data.Timestamp,data.Student,data.Class,data.Note]);
-//   return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
-// };
+*/
 
