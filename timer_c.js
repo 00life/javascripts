@@ -11,7 +11,7 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     btn.addEventListener('click', e2 => {
 
         let timestamp = new Date().toLocaleString();
-        let student = document.querySelector('td.seat-cellName').innerText;
+        let student = e2.currentTarget.parentNode.parentNode.innerText;
         let school = document.querySelector('#topTitleBar > table > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(1) > td > span').innerText;
         let myclass = document.querySelector('#bodytop > h1 > a:nth-child(2)').innerText;
         var note;
@@ -44,10 +44,10 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     btn2.setAttribute('type','button');
     btn2.setAttribute('value','✎');
     btn2.setAttribute('class','myBtn2');
-    btn2.addEventListener('click',e2=>{
+    btn2.addEventListener('click',e2 => {
 
         let timestamp = new Date().toLocaleString();
-        let student = document.querySelector('td.seat-cellName').innerText;
+        let student = e2.currentTarget.parentNode.parentNode.innerText;
         let school = document.querySelector('#topTitleBar > table > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(1) > td > span').innerText;
         let myclass = document.querySelector('#bodytop > h1 > a:nth-child(2)').innerText;
         let note = prompt("Please enter note");
