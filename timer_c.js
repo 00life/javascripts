@@ -22,9 +22,9 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     btn2.addEventListener('click',e2=>{
         
         let timestamp = new Date().toLocaleString();
-        let student = e2.currentTarget.parentNode.parentNode.parentNode.querySelector('.pssc-studentNameSpan').innerHTML;
-        let school = document.querySelector('#schoolText').innerText;
-        let myclass = document.querySelector('#content-main > h1').innerText.slice(16,);
+        let student = e2.currentTarget.querySelector('td.seat-cellName').innerHTML;
+        let school = document.querySelector('span').innerText;
+        let myclass = document.querySelector('#bodytop > h1 > a:nth-child(2)').innerText;
         let note = prompt("Please enter note");
         if(note == null){return};
         
@@ -40,6 +40,7 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
 
     let ele_div = document.createElement('div');
     ele_div.appendChild(btn);
+    ele_div.appendChild(btn2);
     e1.appendChild(ele_div);
 });
 
