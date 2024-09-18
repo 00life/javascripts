@@ -14,17 +14,6 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
         }else{
             e2.currentTarget.value = 'TIME'};
     });
-
-    let btn2 = document.createElement('input');
-    btn2.setAttribute('type','button');
-    btn2.setAttribute('value','✎');
-    btn2.setAttribute('class','myBtn2');
-    btn2.addEventListener('click',e2=>{
-        
-        let timestamp = new Date().toLocaleString();
-    
-        let note = prompt("Please enter note");
-        if(note == null){return};
         
     let ele_div = document.createElement('div');
     ele_div.appendChild(btn);
