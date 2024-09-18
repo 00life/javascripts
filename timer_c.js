@@ -14,9 +14,35 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
         }else{
             e2.currentTarget.value = 'TIME'};
     });
+
+    let btn2 = document.createElement('input');
+    btn2.setAttribute('type','button');
+    btn2.setAttribute('value','✎');
+    btn2.setAttribute('class','myBtn2');
+    btn2.addEventListener('click',e2=>{
+
+        let timestamp = new Date().toLocaleString();
+        let student = document.querySelector('td.seat-cellName').innerText;
+        let school = document.querySelector('#topTitleBar > table > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(1) > td > span').innerText;
+        let myclass = document.querySelector('#bodytop > h1 > a:nth-child(2)').innerText;
+        let note = prompt("Please enter note");
+        if(note == null){return};
+
+        let formData = new FormData();
+        formData.append("Timestamp", timestamp);
+        formData.append("Student", student);
+        formData.append("School", school);
+        formData.append("Class", myclass);
+        formData.append("Note", note);
+
+        let URL = localStorage.getItem("googleSheetSupplyURL");
+        fetch(URL, {method:"POST", body:formData});
+        
+    });
         
     let ele_div = document.createElement('div');
     ele_div.appendChild(btn);
+    ele_div.appendChild(btn2);
     e1.appendChild(ele_div);
 });
 
