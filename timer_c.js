@@ -8,11 +8,35 @@ Array.from(document.querySelectorAll('td.seat-cellName')).forEach(e1=>{
     btn.setAttribute('value','TIME');
     btn.setAttribute('class','myBtn');
     btn.addEventListener('click',e2=>{
-        let date = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+
+        let timestamp = new Date().toLocaleString();
+        let student = document.querySelector('td.seat-cellName').innerText;
+        let school = document.querySelector('#topTitleBar > table > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(1) > td > span').innerText;
+        let myclass = document.querySelector('#bodytop > h1 > a:nth-child(2)').innerText;
+        var note;
+        
         if(e2.currentTarget.value =='TIME'){
-            e2.currentTarget.value = date;
+            e2.currentTarget.value = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+            note = "Hall-Pass (Out)";
         }else{
-            e2.currentTarget.value = 'TIME'};
+            let current = new Date().toLocaleTimeString('en-US', {hour:"2-digit", minute:"2-digit", hour12:false});
+            let current_convert = parseInt(current.slice(0,2))*60 + parseInt(current.slice(-2,));
+            let date_convert = parseInt(e2.currentTarget.value.slice(0,2))*60 + parseInt(e2.currentTarget.value.slice(-2,));
+            let minDiff = current_convert - date_convert;
+            note = `Hall-Pass (Return in ${minDiff} min)`;
+            e2.currentTarget.value = 'TIME';
+        };
+
+        let formData = new FormData();
+        formData.append("Timestamp", timestamp);
+        formData.append("Student", student);
+        formData.append("School", school);
+        formData.append("Class", myclass);
+        formData.append("Note", note);
+        
+        let URL = localStorage.getItem("googleSheetSupplyURL");
+        fetch(URL, {method:"POST", body:formData});
+        
     });
 
     let btn2 = document.createElement('input');
