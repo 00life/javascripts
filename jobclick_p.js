@@ -14,7 +14,7 @@ var snd_shake = new Audio("data:audio/wav;base64," + soundString_shake);
 
 const array_subjects = ["math", "science", "alt. ed", "geography"];
 const array_schools_1 = ["glendale", "sir winston churchill", "bernie custis"];
-const array_schools_2 = ["nora henderson", "westdale", "westmount" ,"sherwood"];
+const array_schools_2 = ["nora henderson", "westdale", "westmount" ,"sherwood","Jean de Brebeuf"];
 const array_schools_3 = ["saltfleet district high", "orchard park secondary"];
 
 function func_clickAccept(lnk){
