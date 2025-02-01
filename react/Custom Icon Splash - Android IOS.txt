@@ -1,0 +1,27 @@
+1. Delete all existing icon assets in Android Studio:
+     - Delete ic_launcher.background.xml and ic_launcher_foreground.xml in drawable folder. This is just an example, you could be any icon asset file format.
+     - Delete all mipmap folders which consist of all the icon assets
+
+2. Generate Icons PNG:
+     * Icon — requires a 1024x1024 png file (transparency allowed)
+     * Splash — requires a 4096x4096 png file (no transparency)
+          - Visit ApeTools (https://apetools.webprofusion.com/)
+          - Visit MakeAppIcon (https://makeappicon.com/)
+	  - Vist pgicons.abiro.com (https://pgicons.abiro.com/)
+
+3. Generate launcher icon from image asset
+     - Right-click in the project window, go to New->Image Asset
+     - Make sure the Icon Type is Launcher Icons (Adaptive and Legacy), which is the default)
+     - In Foreground Layer, Source Asset, select Image Asset Type
+          ~ Browse to your saved icon png
+	  ~ In Scaling, Resize the icon accordingly
+     - In the Background Layer, change the Source Asset Type Color to white color (i.e. FFFFFF)
+
+4. Click Next->Finish. 
+     - Different screen resolution icon assets are now generated in the mipmap folders
+     - The default Res Directly is debug folder. Make sure you select the main folder, so you app with both debug and release variants.
+
+5. For the splash icons:
+     - In your android folder, visit app->src->main->res
+     - Under drawable... folders, replace each individual splash.png with your custom splash.png
+     - taking care to keep the filename the same (i.e. splash.png)

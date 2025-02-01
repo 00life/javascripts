@@ -1,0 +1,74 @@
+1. Create "capacitor.config.json" in root directory of your project:
+     {
+       "appId": "io.ionic.{NAMEOFYOURAPP}",
+       "appName": "{NAMEOFYOURAPP}",
+       "bundledWebRuntime": false,
+       "npmClient": "npm",
+       "webDir": "build",
+       "cordova": {}
+     }
+
+2. Create "ionic.config.json" in the root directory of your project:
+
+     {
+       "name": "{NAMEOFYOURAPP}",
+       "integrations": {
+         "capacitor": {}
+       },
+       "type": "react"
+     }
+
+3. Build your react project
+     $     npm run build
+
+4. Install ionic capacitor:
+     $     npm install @capacitor/core
+     $     npm install @capacitor/cli --save-dev
+     $     npm install @capacitor/android
+     $     npm install @capacitor/filesystem  #(save file to phone)
+     $     npm install @capacitor/app #(control the backbutton Handler)
+
+     $     npx cap init
+
+     ANDROID:   
+          $     npx cap add android #(create an "android" folder) || ionic capacitor add android
+          $?    npx cap open android #(shortcut to android studio)
+          $     npx cap sync #(to sync @capacitor/filesystem plugin)
+
+     IOS:
+          $     npx cap add ios#(create an ios folder) || ionic capacitor add ios
+	  $?    npx cap open ios #(shortcut to Xcode)
+	  $     npx cap sync #(to sync @capacitor/filesystem plugin)
+
+5. Add Permissions to ..\android\app\src\main\AndroidManifest.xml
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+7. Fix dependency issues:
+     $     npm install --save-dev "<dependency_pkg>"
+
+     msg$  npm WARN @apideck/better-ajv-errors@0.3.6 requires a peer of ajv@>=8 but none is installed. You must install peer dependencies yourself.
+     fix$  npm install --save-dev "ajv@>=8"
+
+8. Open you React app with Android Studio:
+     >> File >> Open
+     * Navigate to the "android" folder in your react project
+     >> Run >> Run 'app'
+
+9. Build an Unsigned APK with Android Studio:
+     >> Build > Build Bundle(s)/APK(s) > Build APK(s)
+     * APK Found: android\app\build\outputs\apk\debug
+     * The APK is named "app-debug.apk"
+
+10. Build a Signed APK with Android Studio:
+     >> Build >> Generate Signed Bundle/APK
+     >> Check "APK" >> "Next"
+     * Key Store Information:
+	>> Create new...
+        * Fill out the form with all relavent information
+        * Copy the path where you stored your .jks
+        >> Select "release"
+        >> Select "V2 (Full APK Signature)"
+	* Click "Finish"
+        * APK Found: android/app/release
+        * The APK is named "app-release.apk"

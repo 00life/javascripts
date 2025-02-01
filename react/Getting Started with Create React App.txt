@@ -1,0 +1,111 @@
+1) Install:
+$     npm init --yes #(create package manager json file)
+$     npm i react react-dom #(install react and react-dom)
+$     npm i webpack webpack-cli webpack-dev-server -D
+$     npm i html-webpack-plugin -D
+$     npm i @babel/core @babel/plugin-proposal-class-properties @babel/preset-env @babel/preset-react babel-loader css-loader style-loader file-loader -D
+$     npm i serve -D
+
+||$   npx create-react-app {APP_NAME}
+  $   cd {APP_NAME}
+  $   [npm start | npm run build]
+
+2) Create necessary folders and files:
+*     Create 'public' folder with an 'index.html' inside it:
+.         <div id='root'></div>
+
+*     Create 'src' folder with 'index.js' inside it:
+.         import React from 'react';
+.         import ReactDOM from 'react-dom';
+.         import App from './App';
+.         ReactDOM.render(<App/>, document.getElementById('root'));s
+
+*     Inside the 'src' folder create 'App.js':
+.         import React from 'react';
+.         class App extends React.Component {
+.           render(){
+.             return 'Hello world'
+.           }
+.         }
+.         export default App
+
+*     Inside the root folder create 'webpack.config.js'
+.         const HtmlWebpackPlugin = require('html-webpack-plugin');
+.         const path = required('path');
+.         module.exports = {
+.             context:__dirname,
+.             entry: './src/index.js',
+.             output: {
+.                 path: path.resolve(__dirname, 'dist'),
+.                 filename: 'main.js',
+.                 publicPath: '/',
+.             },
+.             devServer:{
+.                 historyApiFallback:true,
+.             },
+.             module:{
+.                 rules:[
+.                     {
+.                       test:/\.js$/,
+.                       use: 'babel-loader'
+.                     },
+.                     {
+.                       test:/\.css?$/,
+.                       use: ['style-loader','css-loader']
+.                     },
+.                     {
+.                       test:/\.(png|j?g|svg|gif)?$/,
+.                       use: 'file-loader?name=./images/[name].[ext]'
+.                     },
+.                 ],
+.             },
+.             plugins: [
+.                 new HtmlWebpackPlugin({
+.                     template: path.resolve(__dirname,'public/index.html'),
+.                     filename: 'index.html'
+.                 })
+.             ],
+.         };
+
+*     In the 'src' create a folder called 'images'
+*     in the root directory, create a file '.babelrc' 
+
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "modules":false,
+            "targets":{
+                "browsers":[
+                    "last 2 Chrome versions",
+                    "last 2 Firefox versions",
+                    "last 2 Safari version",
+                    "last 2 iOS version",
+                    "last 1 Android version",
+                    "last 1 ChromeAndroid version",
+                    "ie 11"
+                ]
+            }
+        }],
+        "@babel/preset-react"
+    ],
+    "plugins": ["@babel/plugin-proposal-class-properties"]
+}
+
+3) Edit package.json.  Write the 'Scripts':
+...
+"scripts": {
+    "webpack-dev-server":"webpack-dev-server",
+    "dev":"webpack serve --mode=development",
+    //"prod":"NODE_ENV=production webpack --mode=development",
+    "prod":"webpack --mode=production",
+    "serve": "npm run prod && serve -s dist",
+    "svg": "svgr -d src/components/icons src/components/icons/svgs"
+  },
+...
+
+4) Run server:
+||$   npm run dev #(for development)
+||$   npm run serv #(for production)
+
+5) Install special components:
+$     npm install @reach/router

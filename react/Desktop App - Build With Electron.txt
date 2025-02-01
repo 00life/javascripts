@@ -1,0 +1,172 @@
+1) Create a "main.js" in the "public" React folder with the contents:
+
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+
+function createWindow () {
+  // Create the browser window.
+  const win = new BrowserWindow({
+    title:'Name-of-App',
+    frame:true,
+    icon: path.join(__dirname,'..','build','icon.png'),
+
+    width: 800,
+    height: 600,
+
+    maxWidth:900,
+    maxHeight:700,
+    minWidth:700,
+    minHeight:500,
+
+    backgroundColor:"white",
+
+    webPreferences: {
+      nodeIntegration: true,
+      worldSafeExecution: true,
+      contextIsolation: true,
+      preload:'./preload.js'
+    }
+  })
+
+  //load the index.html from a url
+  win.loadURL(
+       true
+            ? 'http://localhost:3000'
+            : `file://${path.join(__dirname,'..','build','index.html')}`
+  );
+
+  // Open the DevTools.
+  win.webContents.openDevTools()
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.whenReady().then(createWindow)
+
+// Quit when all windows are closed, except on macOS. There, it's common
+// for applications and their menu bar to stay active until the user quits
+// explicitly with Cmd + Q.
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
+})
+
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
+})
+
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.
+
+2) In the package.json and the following line:
+
+      //Dont forget to add a comma after this line
+      "private":true,
+      //add this line
+      "main":"public/main.js",
+      "homepage": "./",
+      "description": "tracking app",
+      "name": "tracker",
+      "author": "rezatahirkheli reza.s.tahirkheli@gmail.com
+
+3) Install electron and other dependencies:
+$     npm install --global yarn
+$     npm i electron
+$     yarn add concurrently
+$     yarn add wait-on
+$     yarn add cross-env
+
+// Build the Desktop binaries
+$     yarn add electron-builder
+
+4) Under "scripts" in the package.json, add:
+     "eject":"react-scripts eject",
+     "electron-dev":"electron .",
+     "electron:serve":"concurrently -k \"cross-env BROWSER=none yarn start \" \"yarn electron:start\" ",
+     "electron:build":"yarn build && electron-builder -c.extraMetadata.main=build/main.js",
+     "electron:start":"wait-on http://127.0.0.1:3000 && electron ."
+   //"electron:start":"wait-on tcp:127.0.0.1:3000 && electron ."
+
+5) Add a Build to the package.json:
+
+     "build":{
+          "extends":null,
+          "appId":"com.electron.APPNAME",
+          "files":[
+               "dist/**/*",
+               "build/**/*",
+               "node_modules/**/*",
+               "package.json",
+	       "public/**/*"
+          ],
+          "directories":{
+               "buildResources":"assets"
+          }
+     }
+
+6) Create a preload.js script and add it to main:
+
+Example preload.js:
+     const {contextBridge} = require('electron');
+     const fs = require('fs');
+
+     contextBridge.exposeInMainWorld('api', {
+         lin:(msg)=>fs.appendFileSync('/home/trackerR324/log.txt', msg),
+         win:(msg)=>fs.appendFileSync('C:/trackerR324/log.txt', msg),
+     });
+
+Example reactPage.js:
+     async function funcAuto_desktopAutosave(configuration, string_entry){
+    
+        if(!configuration.logWin){
+            await window.api.win(string_entry)
+        }else if(!configuration.logLin){
+            await window.api.lin(string_entry)
+        }else{
+            return
+        };
+     };
+
+7) To start the electon app:
+$     yarn electron:serve
+
+8) To build the binary exe (located /dist/REACTNAME.exe):
+$     yarn electron:build
+
+9)  Fixing Errors:
+$     npm cache clean -f
+
+10) Fixing Errors:
+    In your React app, replace BrowserRouter with HashRouter 
+    for the main.js > loadURL(file://../build/index.html) to work
+
+11) In your package.json, to use electron-build, change 
+    dependencies to devDependencies...then run:
+$     yarn electron:build 
+
+12) Add to package.json in "build":
+    "win": {
+      "icon": "build/icon.png",
+      "target": "NSIS"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png"
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "target": [
+        "snap",
+        "AppImage",
+        "deb"
+      ]
+    }
+
+
