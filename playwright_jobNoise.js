@@ -39,11 +39,11 @@ const func_auth = async (page, URL) => {
 
     await page.goto(URL);
 
-    await page.locator('//input[@placeholder="Enter username or email"]').fill('rezatahirkheli');
+    await page.locator('//input[@placeholder="Enter username or email"]').fill('<USERNAME>');
     
     await page.click('//input[@value="Next"]');
     
-    await page.locator('//span[text()="Password"]/parent::*/following-sibling::*[1]').pressSequentially('Westside99', {delay:100});
+    await page.locator('//span[text()="Password"]/parent::*/following-sibling::*[1]').pressSequentially('<PASSWORD>', {delay:100});
     
     await page.locator('//input[@value="Sign In"]').click();
 
