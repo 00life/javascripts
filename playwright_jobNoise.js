@@ -17,8 +17,8 @@ const DELAY = 10000;
     const browser1 = await chromium.launch({headless:false, args: ["--window-position=0,0"]});
     const browser2 = await chromium.launch({headless:false, args: ["--window-position=650,0"]});
 
-    const context1 = await browser1.newContext({viewport: {width: 650,height: 600}});
-    const context2 = await browser2.newContext({viewport: {width: 650,height: 600}});
+    const context1 = await browser1.newContext({viewport: {width: 650, height: 600}});
+    const context2 = await browser2.newContext({viewport: {width: 650, height: 600}});
     
     const openPage1 = await context1.newPage();
     const openPage2 = await context2.newPage();
