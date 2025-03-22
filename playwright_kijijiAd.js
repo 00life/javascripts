@@ -4,9 +4,10 @@ const path = require( "path" );
 const URL_LOGIN = 'https://www.kijiji.ca/b-hamilton/l80014';
 const URL_ADS = 'https://www.kijiji.ca/m-my-ads/active/1';
 const URL_POSTAD = 'https://www.kijiji.ca/p-select-category.html';
-const USER = 'USERNAME';
-const PASS = 'PASSWORD';
+const USER = 'pawn88@live.com';
+const PASS = 'westside';
 const PRICE = '650';
+const PRICE2 = String(parseInt(PRICE) + 100);
 const AD_TITLE = `$${PRICE}/mo room Kensington / Cannon - Professionals / Students`;
 const AD_DESCRIPTION = `
 Please include some information about yourself.  I don't reply to vague details, or people who cannot keep appointments. I only rent to people I meet.
@@ -15,7 +16,7 @@ Rooms for rent in large detached house in Kensington Ave N and Cannon st area in
 Room 0 (15'x30')( taken)
 Room 1 (10'x9') $${PRICE}/mo (available)
 Room 2 (11'x 9') $${PRICE}/mo (available)
-Room 3 (11'x 15') $${PRICE+100}/mo (available)
+Room 3 (11'x 15') $${PRICE2}/mo (available)
 
 Street and private parking available.
 
@@ -44,7 +45,7 @@ Keywords: brock university mcmaster professional white collar student safe neigh
     const openPage = await context.newPage();
     openPage.setDefaultTimeout(300000);
 
-    console.log('\x1b[34m[] func_auth [] func_checkAd [] Ad Details [] Description [] Pictures [] func_postAd\x1b[0m');
+    console.log('[] func_auth [] func_checkAd [] Ad Details [] Description [] Pictures [] func_postAd');
 
     let page = await func_auth(openPage, URL_LOGIN);
 
@@ -52,7 +53,7 @@ Keywords: brock university mcmaster professional white collar student safe neigh
 
     await func_postAd (page);
 
-    await func_timeDelay();
+    await page.waitForTimeout(5000);
 
     await browser.close();
 
@@ -73,9 +74,9 @@ const func_auth = async (page, URL) => {
 
     await page.keyboard.press('Enter');
 
-    await func_timeDelay(10000);
+    await page.waitForTimeout(10000);
     
-    console.log('[\x1b[32m✔\x1b[0m] func_auth');
+    console.log(func_colorStr('[✔] func_auth'));
 
     return page
 };
@@ -96,7 +97,7 @@ const func_checkAd = async (page)=>{
         await page.locator('//button[contains(text(),"Delete My Ad")]').click();
     };
 
-    console.log('[\x1b[32m✔\x1b[0m] func_checkAd');
+    console.log(func_colorStr('[✔] func_checkAd'));
 };
 
 
@@ -114,7 +115,7 @@ const func_postAd = async (page)=>{
 
     await page.locator('//span[contains(text(),"Room Rentals & Roommates") and contains(@class,"level3Category")]').click();
 
-    console.log('[\x1b[32m✔\x1b[0m] Ad Details');
+    console.log(func_colorStr('[✔] Ad Details'));
 
     await page.locator('//span[contains(text(),"I am offering")]').click();
 
@@ -126,7 +127,7 @@ const func_postAd = async (page)=>{
 
     await page.locator('//textarea[@name="postAdForm.description"]').fill(AD_DESCRIPTION);
 
-    console.log('[\x1b[32m✔\x1b[0m] Description');
+    console.log(func_colorStr('[✔] Description'));
 
     let arrayFiles = [];
     for(let i=1; i < 10; i++){
@@ -135,22 +136,22 @@ const func_postAd = async (page)=>{
 
     await page.locator('//input[@type="file"]').setInputFiles(arrayFiles);
     
-    console.log('[\x1b[32m✔\x1b[0m] Pictures');
+    console.log(func_colorStr('[✔] Pictures'));
 
     await page.locator('//input[@name="postAdForm.priceAmount"]').fill(PRICE);
 
     await page.locator('//h3[contains(text(), "Lite")]/parent::*/parent::*').locator('//button').click();
 
-    await func_timeDelay(300000);
+    await page.waitForTimeout(30000);
 
     await page.locator('//button[@type="submit" and contains(text(),"Post")]').click();
 
-    console.log('[\x1b[32m✔\x1b[0m] func_postAd');
+    console.log(func_colorStr('[✔] func_postAd'));
 };
 
 
-const func_timeDelay = async (time=5000) => {
-
-    await new Promise(resolve =>setTimeout(async()=>{await resolve()}, time));
-
-}; 
+const func_colorStr = (statement) => {
+    let mod_statement = statement
+        .replaceAll('✔', '\x1b[32m✔\x1b[0m') // green
+    return mod_statement;
+};
