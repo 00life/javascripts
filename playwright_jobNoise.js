@@ -8,26 +8,30 @@ const ARRAY_SCHOOLS_3 = ["saltfleet", "orchard"];
 
 const STATUS = 'open';
 const PAY = '100%';
+const DELAY = 10000;
 
 // Main Function
 
 (async () => {
     
-    const browser = await chromium.launch({headless:false});
-    const context = await browser.newContext();
+    const browser1 = await chromium.launch({headless:false, args: ["--window-position=0,0"]});
+    const browser2 = await chromium.launch({headless:false, args: ["--window-position=650,0"]});
+
+    const context1 = await browser1.newContext({viewport: {width: 650,height: 600}});
+    const context2 = await browser2.newContext({viewport: {width: 650,height: 600}});
     
-    // const openPage1 = await context.newPage();
-    const openPage2 = await context.newPage();
+    const openPage1 = await context1.newPage();
+    const openPage2 = await context2.newPage();
  
-    // openPage1.setDefaultTimeout(300000);
+    openPage1.setDefaultTimeout(300000);
     openPage2.setDefaultTimeout(300000);
 
-    // let page_c = await func_auth(openPage1, 'https://hwcdsb.simplication.com/WLSBLogin.aspx');
+    let page_c = await func_auth(openPage1, 'https://hwcdsb.simplication.com/WLSBLogin.aspx');
     let page_p = await func_auth(openPage2, 'https://hwdsb.simplication.com/WLSBLogin.aspx');  
     
     while (true) {
         
-        // await func_assignOffer(page_c, 'https://hwcdsb.simplication.com/Applicant/AttOccasionalPostings.aspx?TAB=PA');
+        await func_assignOffer(page_c, 'https://hwcdsb.simplication.com/Applicant/AttOccasionalPostings.aspx?TAB=PA');
         await func_jobBoard(page_p, 'https://hwdsb.simplication.com/Applicant/AttOccasionalJobBoard.aspx');
     };
 })();
@@ -39,23 +43,21 @@ const func_auth = async (page, URL) => {
 
     await page.goto(URL);
 
-    await page.locator('//input[@placeholder="Enter username or email"]').fill('<USERNAME>');
+    await page.locator('//input[@placeholder="Enter username or email"]').fill('rezatahirkheli');
     
     await page.click('//input[@value="Next"]');
     
-    await page.locator('//span[text()="Password"]/parent::*/following-sibling::*[1]').pressSequentially('<PASSWORD>', {delay:100});
+    await page.locator('//span[text()="Password"]/parent::*/following-sibling::*[1]').pressSequentially('Westside99', {delay:100});
     
     await page.locator('//input[@value="Sign In"]').click();
 
-    console.log('[\x1b[32m✔\x1b[0m] func_auth ' + URL.slice(0,15));
+    console.log(func_colorStr('[✔] func_auth ' + URL.slice(0,15)));
 
     return page;
 };
 
 
 const func_assignOffer = async (page, URL) => {
-
-    await page.waitForTimeout(10000);
 
     await func_continue(page);
         
@@ -64,10 +66,18 @@ const func_assignOffer = async (page, URL) => {
     await page.goto(URL);
 
     await page.locator('//input[@id="ctl00_ContentPlaceHolder1_chkOpenPostingsOnly"]').click();
-        
+    
+    await page.waitForTimeout(1000);
+
+    await page.mouse.wheel(0, 100);
+    
+    await page.waitForTimeout(DELAY);
+
     let rows = await page.locator('//a[@class="AbsenceEx"]/parent::td/parent::tr'); // Array Rows
         
-    if(Array.from(await rows.all()).length == 0){return}; //Guard Clause
+    if(Array.from(await rows.all()).length == 0){console.log(func_colorStr('[-] Guard Clause: assignOffer')); return};
+
+    console.log('--- Catholic Board ---');
 
     for(let row of await rows.all()) {
             
@@ -76,7 +86,7 @@ const func_assignOffer = async (page, URL) => {
         let sub = await row.locator('//td[3]').evaluate(e=>e.innerText);
         let school = await row.locator('//td[4]').evaluate(e=>e.innerText.split('\n')[0]);
         let status = await row.locator('//td[7]').evaluate(e=>e.innerText);
-            
+        
         // Array Splits
         let array_school = school.split(' ').map(e=>e.toLowerCase());
         let array_sub = sub.split(' ').map(e=>e.toLowerCase());
@@ -89,18 +99,18 @@ const func_assignOffer = async (page, URL) => {
         let bool_status = status.toLowerCase() == STATUS.toLowerCase() ? true : false;
         let bool_pay = pay.toLowerCase() == PAY.toLowerCase() ? true : false;
             
-        // Nested Ternary Operators
+        // Ternary Operators
         (bool_status && bool_pay && "library".includes(sub.toLowerCase())) ? await func_audio(page,"sound_bing") : null;
         (bool_status && bool_pay && bool_sub && bool_school_1) ? await func_audio(page,"sound_click") : null;
         (bool_status && bool_pay && bool_sub && bool_school_2) ? await func_audio(page,"sound_tick") : null;
         (bool_status && bool_pay && bool_sub && bool_school_3) ? await func_audio(page,"sound_shake") : null;
+
+        console.log(func_colorStr(`[*] Pay:${pay}[${bool_pay}], Sub:${sub}[${bool_sub}], School:${school.slice(0,10)}, Status:${status}[${bool_status}]`));
     };
 };
 
 
 const func_jobBoard = async (page, URL) => {
-
-    await page.waitForTimeout(10000);
 
     await func_continue(page);
 
@@ -108,9 +118,17 @@ const func_jobBoard = async (page, URL) => {
 
     await page.goto(URL);
 
-    let rows = await page.locator('//div[@id="job-list"]/div[1]/*'); // Array Rows
+    await page.waitForTimeout(1000);
 
-    if (Array.from(await rows.all()).length == 0){return}; //Guard Clause
+    await page.mouse.wheel(0, 100);
+
+    await page.waitForTimeout(DELAY);
+
+    let rows = await page.locator('//h4/a/parent::h4/parent::div'); // Array Rows
+   
+    if (Array.from(await rows.all()).length == 0) {console.log(func_colorStr('[-] Guard Clause: jobBoard')); return};
+
+    console.log('--- Public Board ---');
 
     for (let row of await rows.all()) {
 
@@ -129,14 +147,17 @@ const func_jobBoard = async (page, URL) => {
         let bool_school_1 = ARRAY_SCHOOLS_1.some(e=>array_school.includes(e.toLowerCase()));
         let bool_school_2 = ARRAY_SCHOOLS_2.some(e=>array_school.includes(e.toLowerCase()));
         let bool_school_3 = ARRAY_SCHOOLS_3.some(e=>array_school.includes(e.toLowerCase()));
-        let bool_sub = LIST_SUBJECTS.some(e=>array_sub.includes(e.toLowerCase()));
+        let bool_school = [...ARRAY_SCHOOLS_1, ...ARRAY_SCHOOLS_2, ...ARRAY_SCHOOLS_3].some(e=>array_school.includes(e.toLowerCase()));
+        let bool_sub = ARRAY_SUBJECTS.some(e=>array_sub.includes(e.toLowerCase()));
         let bool_pay = pay.toLowerCase() == PAY.toLowerCase() ? true : false;
 
-        // Nested Ternary Operators
+        // Ternary Operators
         (bool_pay && "library".includes(sub.toLowerCase())) ? await func_audio(page,"sound_bing") : null;
         (bool_pay && bool_sub && bool_school_1) ? await func_audio(page,"sound_click") : null;
         (bool_pay && bool_sub && bool_school_2) ? await func_audio(page,"sound_tick") : null;
         (bool_pay && bool_sub && bool_school_3) ? await func_audio(page,"sound_shake") : null;
+            
+        console.log(func_colorStr(`[*] Pay:${pay}[${bool_pay}], Sub:${sub}[${bool_sub}], School:${school.slice(0,10)}:[${bool_school}]`));
     };
 };
 
@@ -176,7 +197,7 @@ const func_continue = async (page) => {
             
             con.click();
             
-            console.log('[\x1b[32m✔\x1b[0m] func_continue()');
+            console.log(func_colorStr('[!] func_continue()'));
         }; 
     };
 };
@@ -190,6 +211,21 @@ const func_relog = async (page, url_page) => {
 
         await func_auth(page, url_page);
 
-        console.log('[\x1b[32m✔\x1b[0m] func_func_relog()');
+        console.log(func_colorStr('[!] func_func_relog()'));
     };
+};
+
+
+const func_colorStr = (statement) => {
+    let mod_statement = statement
+        .replaceAll('*', '\x1b[34m*\x1b[0m') // blue
+        .replaceAll('true', '\x1b[32mtrue\x1b[0m') // green
+        .replaceAll('false', '\x1b[31mfalse\x1b[0m') // red
+        .replaceAll('✔', '\x1b[32m✔\x1b[0m') // green
+        .replaceAll('-', '\x1b[31m-\x1b[0m') // red
+        .replaceAll('!', '\x1b[33m!\x1b[0m') // yellow
+        .replaceAll('Pay','\x1b[106mPay\x1b[0m') // bg yellow
+        .replaceAll('Sub','\x1b[106mSub\x1b[0m') // bg yellow
+        .replaceAll('School','\x1b[106mSchool\x1b[0m') // bg yellow
+    return mod_statement;
 };
