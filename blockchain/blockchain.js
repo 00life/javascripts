@@ -13,7 +13,7 @@ function Blockchain() {
     this.currentNodeUrl = currentNodeUrl;
 
     // Hashing the contents of blockchain.js
-    var fileContents = fs.readFileSync('dev/blockchain.js','utf8');
+    var fileContents = fs.readFileSync('./blockchain.js','utf8');
     this.hashJSCode = createHash('sha256').update(fileContents).digest('hex');
     
     // First block (i.e. genesisBlock): createNewBlock(nonce, previousHash, currentHash)
