@@ -11,7 +11,7 @@ async function func_followTraders(trader){
     let pageText = await page.text();
 
     let lookB = '(?<=q-field issuer-ticker\">)';
-    let lookA = '(?=:)';
+    let lookA = '(?=q-field tx-type tx-type--buy has-asterisk)';
     let stockMatch = pageText.matchAll(lookB + '.*?' + lookA);
     
     let set_stocks = new Set();
@@ -19,13 +19,14 @@ async function func_followTraders(trader){
     let count = 0;
     for(const stock of stockMatch){
         if(count >= 10) break;
-        if(stock[0].includes('N/A')) continue;
-        set_stocks.add(stock[0]);
+        let stock_code = stock[0].match('^.*?(?=:)')[0];
+        if(stock_code.includes('N/A')) continue;
+        set_stocks.add(stock_code);
         count++;
     };
     
     let array_stocks = Array.from(set_stocks);
-    return array_stocks;
+    return array_stocks
 };
 
 async function func_poliFreqStock(){
