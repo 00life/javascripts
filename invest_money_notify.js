@@ -2,7 +2,7 @@ const TRADERS = {Pelosi:'P000197',Romney:'R000615',Warner:'W000805',McConnel:'M0
 const STOCKS_NASDAQ = ['NVDA','TSLA', 'AMZN', 'GOOGL','TEM', 'PANW','AVGO','MSFT','PLTR'];
 const STOCKS_NYSE = ['VST'];
 const TOP_INTEREST = 5;
-const URL ='https://script.google.com/macros/s/AKfycbzzVxX1O0UTSzHBe7UElCNwnVPZrU3GqE98pmrivrQajqqM8QEe477O6MEl8gbhimozCg/exec';
+const URL ='<GOOGLE_APPS_SCRIPT_URL>';
 
 
 async function func_followTraders(trader){
@@ -121,5 +121,5 @@ function func_sendMail (email, sub, msg) {
 // Main Function
 (async ()=>{
     let sms = await func_combineData();
-    func_sendMail('9059620550@txt.bell.ca','', sms);
+    func_sendMail('<EMAIL_ADDRESS>','', sms);
 })();
