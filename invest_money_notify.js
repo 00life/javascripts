@@ -124,3 +124,20 @@ function func_sendMail (email, sub, msg) {
     let sms = await func_combineData();
     func_sendMail('<EMAIL_ADDRESS>','', sms);
 })();
+
+
+//---------------------------------------------------
+//---Run the script from Github---
+//---------------------------------------------------
+//const APP_URL ='';
+//const EMAIL = '';
+
+//// Main Function
+//(async ()=>{
+//    let response = await fetch('https://raw.githubusercontent.com/00life/javascripts/refs/heads/master/invest_money_notify.js');
+//    let str_code = await response.text();
+//    let update_code = str_code
+//                        .replace('<GOOGLE_APPS_SCRIPT_URL>', APP_URL)
+//                        .replace('<EMAIL_ADDRESS>', EMAIL)
+//    eval(update_code)
+//})();
