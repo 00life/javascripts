@@ -123,6 +123,7 @@ function func_sendMail (email, sub, msg) {
 (async ()=>{
     let sms = await func_combineData();
     func_sendMail('<EMAIL_ADDRESS>','', sms);
+    func_sendMail('<EMAIL_ADDRESS2>','', sms);
 })();
 
 
