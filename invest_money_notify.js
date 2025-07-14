@@ -17,8 +17,11 @@ async function func_followTraders(trader){
     let set_stocks = new Set();
 
     let count = 0;
+    let count2 = 0
+    
     for(const stock of stockMatch){
-        if(count >= 10) break;
+        count2++;
+        if(count >= 10 || count2 >=20) break;
         let stock_code = stock[0].match('^.*?(?=:)')[0];
         if(stock_code.includes('N/A')) continue;
         set_stocks.add(stock_code);
