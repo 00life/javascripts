@@ -1,6 +1,6 @@
 const TRADERS = {Pelosi:'P000197',Romney:'R000615',Warner:'W000805',McConnel:'M000355',Gottheimer:'G000583'};
 const STOCKS_NASDAQ = ['NVDA','TSLA', 'AMZN', 'GOOGL','TEM', 'PANW','AVGO','MSFT','PLTR'];
-const STOCKS_NYSE = ['VST'];
+const STOCKS_NYSE = ['VST', 'BN'];
 const TOP_INTEREST = 5;
 const URL ='<GOOGLE_APPS_SCRIPT_URL>';
 
