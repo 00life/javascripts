@@ -35,5 +35,8 @@ const userDataDir ='/home/pi/.config/chromium';
         }, 100)
     });
 
-    setTimeout(async()=>await browser.close(), 2*60*1000);
+    setTimeout(async()=>{
+        console.log('[✔] Click on Stories');
+        await browser.close();
+    }, 2*60*1000);
 })();
