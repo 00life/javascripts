@@ -14,6 +14,7 @@ const userDataDir ='/home/pi/.config/chromium';
     
     const page = await browser.pages().at(0);
     page.setDefaultTimeout(300000);
+    console.log('[✔] Open browser');
     
     await page.goto('https://m.instagram.com/');
     await page.waitForTimeout(1000);
@@ -34,5 +35,5 @@ const userDataDir ='/home/pi/.config/chromium';
         }, 100)
     });
 
-    setTimeout(async()=>await browser.close(), 60*1000);
+    setTimeout(async()=>await browser.close(), 2*60*1000);
 })();
