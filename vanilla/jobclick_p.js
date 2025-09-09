@@ -66,4 +66,4 @@ setInterval(()=>{
  
  update.click(); 
      
- },10000);
+ },2000);
