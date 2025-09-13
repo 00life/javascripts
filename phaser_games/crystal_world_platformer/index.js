@@ -1,33 +1,50 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>MyPhaserGame</title>
-        <link rel="icon" type="image/x-icon" href="assets/star.png">
-        <style>#game-container{margin: 0; border: 2px solid red; width: fit-content; height: fit-content;}</style>
-    </head>
-    <body style="margin: 100px; max-width: 1280px; max-height: 600px;">
-        <script src="./phaser.min.js"></script>
-            <script src="./anims.js"></script>
-            <script src="./mixins.js"></script>
-            <script src="./effect_manager.js"></script>
-            <script src="./event_emitter.js"></script>
-            <script src="./entity_enemy.js"></script>
-            <script src="./entity_player.js"></script>
-            <script src="./entity_effect.js"></script>
-            <script src="./entity_projectile.js"></script>
-            <script src="./entity_collectable.js"></script>
-            <script src="./entity_melee.js"></script>
-            <script src="./hud_heathbar.js"></script>
-            <script src="./hud_scorebar.js"></script>
-            <script src="./group_enemies.js"></script>
-            <script src="./group_projectiles.js"></script>
-            <script src="./group_collectables.js"></script>
-            <script src="./scene_credits.js"></script>
-            <script src="./scene_menu.js"></script>
-            <script src="./scene_level.js"></script>
-            <script src="./scene_play.js"></script>
-            <script src="./scene_preload.js"></script>
-            <script src='./index.js'></script>
-        <div id="game-container"></div>
-    </body>
-</html>
+const MAP_WIDTH = 1600;
+const WIDTH = document.body.offsetWidth;
+const HEIGHT = 700;
+const ZOOM_FACTOR = 1.5;
+
+const SHARED_CONFIG = {
+    mapOffSet: MAP_WIDTH > WIDTH ? MAP_WIDTH - WIDTH : 0,
+    width: WIDTH,
+    height: HEIGHT,
+    zoomFactor: ZOOM_FACTOR,
+    leftTopCorner: {
+        x: (WIDTH - (WIDTH / ZOOM_FACTOR)) / 2,
+        y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2
+    },
+    rightTopCorner: {
+        x: (WIDTH / ZOOM_FACTOR) + ((WIDTH - (WIDTH / ZOOM_FACTOR)) / 2),
+        y: (HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2
+    },
+    rightBottomCorner: {
+        x: (WIDTH / ZOOM_FACTOR) + ((WIDTH - (WIDTH / ZOOM_FACTOR)) / 2),
+        y: (HEIGHT / ZOOM_FACTOR) + ((HEIGHT - (HEIGHT / ZOOM_FACTOR)) / 2)
+    },
+    lastLevel: 2,
+    debug: true,
+};
+
+const config = {
+    type: Phaser.AUTO,
+    ...SHARED_CONFIG,
+    pixelArt: true,
+    parent: 'game-container',
+    physics: {
+        default:"arcade",
+        arcade: {
+            // gravity: { y: GRAVITY_Y },
+            debug: SHARED_CONFIG.debug
+        }
+    },
+    scene: [
+        Preload,
+        new Menu(SHARED_CONFIG),
+        new Credits(SHARED_CONFIG),
+        new Level(SHARED_CONFIG),
+        new Play(SHARED_CONFIG),
+    ]
+};
+
+const game = new Phaser.Game(config);
+
+
