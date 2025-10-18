@@ -51,10 +51,10 @@ async function initGame() {
     let gameOverScene = createScene("Hordzee", "Game Over");
 
     app.ticker.add((delta) => {
-      if (player.dead) app.gameState = GameState.GAMEOVER;
-      gamePreIntroScene.visible = app.gameState === GameState.PREINTRO;
-      gameStartScene.visible = app.gameState === GameState.START;
-      gameOverScene.visible = app.gameState === GameState.GAMEOVER;
+      if (player.dead) app.gameState = GameState.GAMEOVER; //bool
+      gamePreIntroScene.visible = app.gameState === GameState.PREINTRO; //bool
+      gameStartScene.visible = app.gameState === GameState.START; //bool
+      gameOverScene.visible = app.gameState === GameState.GAMEOVER; //bool
 
       switch (app.gameState) {
         case GameState.PREINTRO:
