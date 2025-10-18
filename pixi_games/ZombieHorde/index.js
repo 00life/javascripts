@@ -153,11 +153,6 @@ function createScene(sceneText, sceneSubText) {
   return sceneContainer;
 }
 
-// function startGame() {
-//   app.gameStarted = true;
-//   app.weather.enableSound();
-// }
-
 async function loadAssets() {
   const zombies = [
     "tankzee",
