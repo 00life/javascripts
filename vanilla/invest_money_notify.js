@@ -1,6 +1,6 @@
 const TRADERS = {Pelosi:'P000197',Romney:'R000615',Warner:'W000805',McConnel:'M000355',Gottheimer:'G000583',Tuberville:'T000278',Goldman:'G000599', Wasserman:'W000797', Wyden:'W000779',Collins:'C001035'};
 const STOCKS_NASDAQ = ['NVDA','TSLA', 'AMZN', 'GOOGL','TEM', 'PANW','AVGO','MSFT','PLTR', 'MATW','INTC'];
-const STOCKS_NYSE = ['VST', 'BN'];
+const STOCKS_NYSE = ['VST', 'BN','TJX'];
 const TOP_INTEREST = 5;
 const URL ='<GOOGLE_APPS_SCRIPT_URL>';
 
